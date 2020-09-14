@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -13,6 +15,10 @@ public class Book {
 	private String title, author, isbn;
 	private double price;
 	private int year;
+	
+	@ManyToOne
+	@JoinColumn(name="categoryid")
+	private Category category;
 	
 	public Book() {
 		super();

@@ -1,6 +1,7 @@
 package fi.kuusisto.bookstore.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fi.kuusisto.bookstore.domain.Book;
 import fi.kuusisto.bookstore.domain.BookRepository;
 
+
 @Controller
 public class BookController {
 	
 	@Autowired
 	BookRepository bookRepository;
+	private CrudRepository<Book, Long> categoryRepository;
 	
 	@GetMapping("/index")
 	@ResponseBody
@@ -32,6 +35,7 @@ public class BookController {
 	@GetMapping("/add")
 	public String addNewBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "addBook";
 	}
 	
@@ -50,6 +54,7 @@ public class BookController {
 	@GetMapping(value = "/edit/{id}")
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "editBook";
 	}
 	
