@@ -9,9 +9,10 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
+	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private long id;
 	private String title, author, isbn;
 	private double price;
 	private int year;
@@ -24,26 +25,18 @@ public class Book {
 		super();
 	}
 
-	public Book(String title, String author, String isbn, double price, int year) {
+	public Book(String title, String author, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.isbn = isbn;
-		this.price = price;
-		this.year = year;
+		this.category = category;
 	}
 
-	public Book(String title, String author) {
-		super();
-		this.title = title;
-		this.author = author;
-	}
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -87,13 +80,21 @@ public class Book {
 		this.year = year;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
-				+ ", year=" + year + "]";
+				+ ", year=" + year + ", category=" + category + "]";
 	}
 	
-	
-	
 }
+
+
 	
