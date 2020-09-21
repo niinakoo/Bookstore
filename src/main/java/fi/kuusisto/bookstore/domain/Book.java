@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Book {
 	
@@ -18,11 +20,21 @@ public class Book {
 	private int year;
 	
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name="categoryid")
 	private Category category;
 	
 	public Book() {
 		super();
+	}
+	
+	public Book(String title, String author, String isbn, double price, int year) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.price = price;
+		this.year = year;
 	}
 
 	public Book(String title, String author, Category category) {
