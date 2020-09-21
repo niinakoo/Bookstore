@@ -1,5 +1,7 @@
 package fi.kuusisto.bookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,7 @@ import fi.kuusisto.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
+	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -20,7 +23,7 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookstoreDemo (BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
-			System.out.println("put books to database, in this case h2");
+			log.info("put books to database, in this case h2");
 			
 			categoryRepository.save(new Category("Historia"));
 			categoryRepository.save(new Category("Fantasia"));
@@ -28,9 +31,9 @@ public class BookstoreApplication {
 			bookRepository.save(new Book("Vuonna 1984", "George Orwell", categoryRepository.findByName("Historia").get(0)));
 			bookRepository.save(new Book("Harry Potter", "J.K.Rowling", categoryRepository.findByName("Fantasia").get(0)));	
 			
-			System.out.println("list all books");
+			log.info("list all books");
 			for (Book book : bookRepository.findAll()) {
-				System.out.println(book.toString());
+				log.info(book.toString());
 			}
 		};	
 	}

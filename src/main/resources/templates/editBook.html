@@ -13,7 +13,7 @@
 			<input type="text" th:field="*{title}"/>
 			<label for="categoryList">Category</label>
 			<select id="categoryList" th:field="*{category}" class="form-control">
-				<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}">
+				<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}">
 				</option>
 			</select>
 			
