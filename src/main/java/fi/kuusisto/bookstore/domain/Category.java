@@ -16,7 +16,7 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long categoryid;
+	private long id;
 	private String name;
 	
 	@JsonBackReference
@@ -32,12 +32,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public long getCategoryid() {
-		return categoryid;
+	public long getId() {
+		return id;
 	}
 
-	public void setCategoryid(long categoryid) {
-		this.categoryid = categoryid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -58,9 +58,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+		return "Category [id=" + id + ", name=" + name + "]";
 	}
-
-
 
 }

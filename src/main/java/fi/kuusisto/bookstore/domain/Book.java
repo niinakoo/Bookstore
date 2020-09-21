@@ -44,6 +44,16 @@ public class Book {
 		this.category = category;
 	}
 
+	public Book(String title, String author, String isbn, double price, int year, Category category) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.price = price;
+		this.year = year;
+		this.category = category;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -102,8 +112,11 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", category=" + category + "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
+				+ ", year=" + year + ", category=" + category + "]";
 	}
+
+	
 	
 }
 
