@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -14,7 +16,9 @@ public class Book {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	@NotNull
     private long id;
+	@Size(min=2, max=30)
 	private String title, author, isbn;
 	private double price;
 	private int year;
